@@ -58,3 +58,4 @@ docs/_build/
 # local environment files
 board/board/secret.py
 board/board/local.py
+db.sqlite3
