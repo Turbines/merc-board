@@ -45,8 +45,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'social.apps.django_app.default',
     'south',
+
+    'social.apps.django_app.default',
+    'bootstrap3',
 
     'core'
 )
@@ -108,6 +110,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEMPLATE_DIRS = (
+    BASE_DIR + "/board/templates/"
+)
 
 AUTH_USER_MODEL = "core.User"
 
