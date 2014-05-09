@@ -1,0 +1,1 @@
+web: gunicorn --chdir board board.wsgi
