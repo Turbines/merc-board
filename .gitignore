@@ -42,6 +42,9 @@ coverage.xml
 .project
 .pydevproject
 
+# Jetbrains
+.idea/
+
 # Rope
 .ropeproject
 
@@ -52,3 +55,6 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# local environment files
+board/board/secret.py
+board/board/local.py
