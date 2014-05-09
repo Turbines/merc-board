@@ -56,6 +56,6 @@ coverage.xml
 docs/_build/
 
 # local environment files
-board/board/secret.py
+env_secret
 board/board/local.py
 db.sqlite3
