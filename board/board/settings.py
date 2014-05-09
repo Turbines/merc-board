@@ -21,6 +21,8 @@ except ImportError:
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
+DATABASES = {}
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
