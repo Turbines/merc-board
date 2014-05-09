@@ -1,13 +1,14 @@
 from django.conf import settings
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, UserManager
 from django.db import models
 
 
 class User(AbstractBaseUser):
-    USERNAME_FIELD = "email"
-
     username = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
+
+    USERNAME_FIELD = "email"
+    objects = UserManager()
 
 
 class Mercenary(models.Model):
