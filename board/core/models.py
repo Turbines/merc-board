@@ -6,14 +6,6 @@ from django.db import models
 from django.utils import timezone
 
 
-class User(AbstractBaseUser):
-    username = models.CharField(max_length=50)
-    email = models.EmailField(unique=True)
-
-    USERNAME_FIELD = "email"
-    objects = CoreUserManager()
-
-
 class CoreUserManager(UserManager):
     def _create_user(self, username, email, password, is_staff, is_superuser, **kwargs):
         now = timezone.now()
@@ -28,6 +20,14 @@ class CoreUserManager(UserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
+
+
+class User(AbstractBaseUser):
+    username = models.CharField(max_length=50)
+    email = models.EmailField(unique=True)
+
+    USERNAME_FIELD = "email"
+    objects = CoreUserManager()
 
 
 class Mercenary(models.Model):
