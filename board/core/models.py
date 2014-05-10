@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+from django import forms
 
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, UserManager
@@ -28,6 +29,11 @@ class User(AbstractBaseUser):
 
     USERNAME_FIELD = "email"
     objects = CoreUserManager()
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
 
 
 class Mercenary(models.Model):
