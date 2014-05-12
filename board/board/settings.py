@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'bootstrap3',
 
+    'board',
     'accounts',
 )
 
