@@ -6,7 +6,7 @@ from django.db import models
 from django.utils import timezone
 
 
-class CoreUserManager(auth_models.UserManager):
+class UserManager(auth_models.UserManager):
     def _create_user(self, username, email, password, is_staff, is_superuser, **kwargs):
         now = timezone.now()
 
@@ -27,7 +27,7 @@ class User(auth_models.AbstractBaseUser):
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = "email"
-    objects = CoreUserManager()
+    objects = UserManager()
 
 
 class Mercenary(models.Model):

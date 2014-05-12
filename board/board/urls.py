@@ -11,8 +11,8 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/register/', 'core.views.register', name='register'),
+    url(r'^accounts/register/', 'accounts.views.register', name='register'),
 
     url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^$', 'core.views.home', name='home')
+    url(r'^$', 'accounts.views.home', name='home')
 )

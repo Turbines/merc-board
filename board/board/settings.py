@@ -51,7 +51,8 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'bootstrap3',
 
-    'core'
+    'accounts',
+    'core',
 )
 
 MIDDLEWARE_CLASSES = (
