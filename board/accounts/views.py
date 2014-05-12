@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.template import RequestContext
+from django.views.generic import UpdateView
 
-from . import forms
+from . import forms, models
 
 
 def register(request):
@@ -18,13 +20,13 @@ def register(request):
     })
 
 
-def profile(request):
-    if request.method == 'POST':
-        form = forms.UserProfileForm(request.POST)
-        if form.is_valid():
-            updated_user = form.save()
-            return HttpResponseRedirect('profile')
-    else:
-        form = forms.UserCreationForm(request.user)
+class ProfileUpdateView(UpdateView):
+    form_class = forms.UserProfileForm
+    model = models.User
+    template_name = "profile.html"
 
-    return render(request, "profile.html", {'form': form})
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_success_url(self):
+        return reverse('profile')

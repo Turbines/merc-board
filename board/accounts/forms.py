@@ -30,7 +30,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ("email",)
+        fields = ("email", "username", "country")
 
     def clean_username(self):
         # Since User.username is unique, this check is redundant,

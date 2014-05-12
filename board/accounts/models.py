@@ -29,7 +29,8 @@ class User(auth_models.AbstractBaseUser):
     name = models.CharField(max_length=100)
     country = CountryField()
 
-
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = "email"
     objects = UserManager()

@@ -15,47 +15,29 @@ class Migration(SchemaMigration):
             ('last_login', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
             ('username', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('email', self.gf('django.db.models.fields.EmailField')(unique=True, max_length=75)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('country', self.gf('django_countries.fields.CountryField')(max_length=2)),
+            ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('modified', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
         ))
         db.send_create_signal(u'accounts', ['User'])
-
-        # Adding model 'Mercenary'
-        db.create_table(u'accounts_mercenary', (
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['accounts.User'], unique=True, primary_key=True)),
-        ))
-        db.send_create_signal(u'accounts', ['Mercenary'])
-
-        # Adding model 'Client'
-        db.create_table(u'accounts_client', (
-            ('user', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['accounts.User'], unique=True, primary_key=True)),
-        ))
-        db.send_create_signal(u'accounts', ['Client'])
 
 
     def backwards(self, orm):
         # Deleting model 'User'
         db.delete_table(u'accounts_user')
 
-        # Deleting model 'Mercenary'
-        db.delete_table(u'accounts_mercenary')
-
-        # Deleting model 'Client'
-        db.delete_table(u'accounts_client')
-
 
     models = {
-        u'accounts.client': {
-            'Meta': {'object_name': 'Client'},
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['accounts.User']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'accounts.mercenary': {
-            'Meta': {'object_name': 'Mercenary'},
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['accounts.User']", 'unique': 'True', 'primary_key': 'True'})
-        },
         u'accounts.user': {
             'Meta': {'object_name': 'User'},
+            'country': ('django_countries.fields.CountryField', [], {'max_length': '2'}),
+            'created': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'email': ('django.db.models.fields.EmailField', [], {'unique': 'True', 'max_length': '75'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'modified': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'username': ('django.db.models.fields.CharField', [], {'max_length': '50'})
         }

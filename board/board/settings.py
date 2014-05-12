@@ -50,6 +50,7 @@ INSTALLED_APPS = (
 
     'social.apps.django_app.default',
     'bootstrap3',
+    'taggit',
 
     'board',
     'accounts',
@@ -120,6 +121,10 @@ TEMPLATE_DIRS = (
 STATIC_ROOT = BASE_DIR + '/static'
 
 AUTH_USER_MODEL = "accounts.User"
+
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+}
 
 try:
     from local import *
