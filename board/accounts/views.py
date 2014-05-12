@@ -19,4 +19,12 @@ def register(request):
 
 
 def profile(request):
-    return render(request, "profile.html", RequestContext(request))
+    if request.method == 'POST':
+        form = forms.UserProfileForm(request.POST)
+        if form.is_valid():
+            updated_user = form.save()
+            return HttpResponseRedirect('profile')
+    else:
+        form = forms.UserCreationForm(request.user)
+
+    return render(request, "profile.html", {'form': form})

@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.contrib.auth import models as auth_models
 from django.db import models
 from django.utils import timezone
+from django_countries.fields import CountryField
 
 
 class UserManager(auth_models.UserManager):
@@ -26,14 +26,10 @@ class User(auth_models.AbstractBaseUser):
     username = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
 
+    name = models.CharField(max_length=100)
+    country = CountryField()
+
+
+
     USERNAME_FIELD = "email"
     objects = UserManager()
-
-
-class Mercenary(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
-
-
-class Client(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
-
