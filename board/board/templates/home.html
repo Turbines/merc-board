@@ -5,5 +5,5 @@ The Mercenary Board
 {% endblock %}
 
 {% block body %}
-    <a href="{% url 'social:begin' 'github' %}">Login with Github</a>
+    <a href="{% url 'social:begin' 'github' %}?next={{ request.path }}">Login with Github</a>
 {% endblock %}
