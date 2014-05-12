@@ -30,9 +30,3 @@ class Posting(BaseModel):
 
     tags = TaggableManager()
 
-
-class Endorsement(BaseModel):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
-
-    endorsed_mercenaries = models.ManyToManyField('MercenaryProfile', related_name='endorsed_mercenaries')
-    endorsed_clients = models.ManyToManyField('ClientProfile', related_name='endorsed_clients')

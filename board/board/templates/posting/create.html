@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+    Create Posting
+{% endblock %}
+
+{% block page-header %}
+    <div class="col-lg-6">
+        <h1>
+            Post a job
+        </h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <form action="" role="form" method="post">{% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <input class="btn btn-default" type="submit" value="Create" />
+        {% endbuttons %}
+    </form>
+{% endblock %}
