@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.db import models
-from taggit.managers import TaggableManager
 
 
 class BaseModel(models.Model):
@@ -17,16 +16,3 @@ class MercenaryProfile(BaseModel):
 
 class ClientProfile(BaseModel):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
-
-
-class Posting(BaseModel):
-    poster = models.ForeignKey(ClientProfile, related_name="postings")
-
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    start = models.DateField()
-    remote = models.BooleanField(default=True)
-    public = models.BooleanField(default=True)
-
-    tags = TaggableManager()
-

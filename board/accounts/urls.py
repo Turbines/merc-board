@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 from django.conf.urls import patterns, url, include
-
-from . import views
 from django.contrib.auth.decorators import login_required
+
+from accounts import views
 
 urlpatterns = patterns('',
                        url(r"", include('django.contrib.auth.urls')),

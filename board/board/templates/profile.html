@@ -5,6 +5,10 @@
     Profile
 {% endblock %}
 
+{% block page-header %}
+<h1>Your Profile</h1>
+{% endblock %}
+
 {% block body %}
     <form action="" method="post">{% csrf_token %}
         {% bootstrap_form form %}

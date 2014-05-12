@@ -1,10 +1,9 @@
-from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import UpdateView
 
-from . import forms, models
+from accounts import forms, models
 
 
 def register(request):

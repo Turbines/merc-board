@@ -54,6 +54,7 @@ INSTALLED_APPS = (
 
     'board',
     'accounts',
+    'postings',
 )
 
 MIDDLEWARE_CLASSES = (
