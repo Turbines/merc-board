@@ -52,7 +52,6 @@ INSTALLED_APPS = (
     'bootstrap3',
 
     'accounts',
-    'core',
 )
 
 MIDDLEWARE_CLASSES = (
