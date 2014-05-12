@@ -10,9 +10,9 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/', include('django.contrib.auth.urls')),
-    url(r'^accounts/register/', 'accounts.views.register', name='register'),
+    url(r'^accounts/', include('accounts.urls')),
 
     url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^$', 'accounts.views.home', name='home')
+    
+    url(r'^$', 'board.views.home', name='home')
 )

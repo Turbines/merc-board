@@ -1,13 +1,8 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render
 from django.template import RequestContext
 
 from . import forms
-
-
-def home(request):
-    context = {}
-    return render_to_response("home.html", context, RequestContext(request))
 
 
 def register(request):
