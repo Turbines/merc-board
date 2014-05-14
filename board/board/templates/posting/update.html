@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+    Posting Update
+{% endblock %}
+
+{% block page-header %}
+    <div class="col-lg-6">
+        <h1>
+            Modifying {{ posting.title }}
+        </h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <form action="" method="post">{% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <input type="submit" value="Update" />
+        {% endbuttons %}
+    </form>
+{% endblock %}

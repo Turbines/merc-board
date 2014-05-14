@@ -1,3 +1,4 @@
+from annoying.fields import AutoOneToOneField
 from django.conf import settings
 from django.db import models
 
@@ -11,8 +12,8 @@ class BaseModel(models.Model):
 
 
 class MercenaryProfile(BaseModel):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
+    user = AutoOneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
 
 
 class ClientProfile(BaseModel):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True)
+    user = AutoOneToOneField(settings.AUTH_USER_MODEL, primary_key=True)

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+    Posting Details
+{% endblock %}
+
+{% block page-header %}
+    <div class="col-lg-6">
+        <h1>
+            {{ posting.title }}
+        </h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    By
+    {% if posting.poster.user.name %}
+        {{ posting.poster.user.name }}
+    {% else %}
+        {{ posting.poster.user.username }}
+    {% endif %}
+    <div>
+        {{ posting.description }}
+    </div>
+    <div>
+        {% for tag in posting.tags.names %}
+            {{ tag }}
+        {% endfor %}
+    </div>
+    {% if posting.poster.user == user %}
+        <a href="{% url 'posting-update' posting.id %}">Edit</a>
+    {% endif %}
+
+{% endblock %}

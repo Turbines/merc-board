@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block title %}
+    Posting Feed
+{% endblock %}
+
+{% block page-header %}
+    <div class="col-lg-6">
+        <h1>
+            Postings
+        </h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <form action="" method="get">
+        {% bootstrap_form filter.form %}
+        {% buttons %}
+            <input class="btn btn-default" type="submit" value="Filter" />
+        {% endbuttons %}
+    </form>
+    <div class="list-group">
+
+        {% for posting in postings %}
+            <li class="list-group-item">
+                {{ posting.title }}
+                {{ posting.description }}
+                {{ posting.start }}
+
+            </li>
+        {% endfor %}
+
+    </div>
+    <div class="pagination">
+    <span class="step-links">
+        {% if postings.has_previous %}
+            <a href="?page={{ postings.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ postings.number }} of {{ postings.paginator.num_pages }}.
+        </span>
+
+        {% if postings.has_next %}
+            <a href="?page={{ postings.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+    </div>
+
+{% endblock %}

@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from taggit.managers import TaggableManager
 
@@ -15,3 +16,5 @@ class Posting(BaseModel):
 
     tags = TaggableManager()
 
+    def get_absolute_url(self):
+        return reverse('posting-details', args=[str(self.id)])
