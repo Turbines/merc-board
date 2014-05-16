@@ -122,6 +122,7 @@ TEMPLATE_DIRS = (
 STATIC_ROOT = BASE_DIR + '/static'
 
 AUTH_USER_MODEL = "accounts.User"
+LOGIN_REDIRECT_URL = "/"
 
 SOUTH_MIGRATION_MODULES = {
     'taggit': 'taggit.south_migrations',

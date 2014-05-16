@@ -1,3 +1,4 @@
+from django.contrib.auth import login, authenticate
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -10,8 +11,10 @@ def register(request):
     if request.method == 'POST':
         form = forms.UserCreationForm(request.POST)
         if form.is_valid():
-            new_user = form.save()
-            return HttpResponseRedirect("/")
+            form.save()
+            user = authenticate(username=request.POST['email'], password=request.POST['password1'])
+            login(request, user)
+            return HttpResponseRedirect(reverse("profile", args=(user.id,)))
     else:
         form = forms.UserCreationForm()
     return render(request, "registration/register.html", {
