@@ -45,7 +45,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'ClientProfile'},
             'created_date': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'modified_date': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
-            'user': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['accounts.User']", 'unique': 'True', 'primary_key': 'True'})
+            'user': ('annoying.fields.AutoOneToOneField', [], {'to': u"orm['accounts.User']", 'unique': 'True', 'primary_key': 'True'})
         },
         u'postings.posting': {
             'Meta': {'object_name': 'Posting'},
