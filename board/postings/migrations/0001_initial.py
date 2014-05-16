@@ -7,6 +7,11 @@ from django.db import models
 
 class Migration(SchemaMigration):
 
+    depends_on = (
+        ('board', "0001_initial"),
+    )
+
+
     def forwards(self, orm):
         # Adding model 'Posting'
         db.create_table(u'postings_posting', (
