@@ -34,4 +34,4 @@ class ProfileUpdateView(UpdateView):
         return self.request.user
 
     def get_success_url(self):
-        return reverse('profile')
+        return reverse('profile', self.request.user.id)
