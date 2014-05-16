@@ -7,6 +7,9 @@ from accounts import views
 urlpatterns = patterns('',
                        url(r"", include('django.contrib.auth.urls')),
                        url(r'^register/$', 'accounts.views.register', name='register'),
-                       url(r'^profile/$',
+                       url(r'^edit/$',
                            login_required(views.ProfileUpdateView.as_view()),
+                           name='edit-profile'),
+                       url(r'^profile/(?P<pk>\d+)/$',
+                           login_required(views.ProfileDetailView.as_view()),
                            name='profile'))

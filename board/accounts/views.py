@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DetailView
 
 from accounts import forms, models
 
@@ -19,10 +19,16 @@ def register(request):
     })
 
 
+class ProfileDetailView(DetailView):
+    model = models.User
+    template_name = "accounts/profile.html"
+    context_object_name = "profile"
+
+
 class ProfileUpdateView(UpdateView):
     form_class = forms.UserProfileForm
     model = models.User
-    template_name = "profile.html"
+    template_name = "accounts/profile-edit.html"
 
     def get_object(self, queryset=None):
         return self.request.user
