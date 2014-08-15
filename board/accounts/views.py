@@ -27,6 +27,14 @@ class ProfileDetailView(DetailView):
     template_name = "accounts/profile.html"
     context_object_name = "profile"
 
+    def get_context_data(self, **kwargs):
+
+
+
+        context = super(ProfileDetailView, self).get_context_data(**kwargs)
+        context['endorsements'] = {}
+        return context
+
 
 class ProfileUpdateView(UpdateView):
     form_class = forms.UserProfileForm

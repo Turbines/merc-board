@@ -6,12 +6,16 @@
 {% endblock %}
 
 {% block page-header %}
-<h1>Your Profile</h1>
+    <h1>{% firstof profile.name profile.username %}</h1>
 {% endblock %}
 
 {% block body %}
+    {% if profile.id != user.id %}
+
+    {% endif %}
     <div>
-    {{ profile.name }}
+        {{ profile.username }}
+        {{ profile.country.name }}
     </div>
     {% if profile.id == user.id %}
         <a href="{% url 'edit-profile' %}">Edit Profile</a>

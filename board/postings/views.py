@@ -21,7 +21,7 @@ class PostingCreateView(CreateView):
         return super(PostingCreateView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('profile')
+        return reverse('home')
 
 
 class PostingDetailView(DetailView):
